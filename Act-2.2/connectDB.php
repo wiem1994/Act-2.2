@@ -2,12 +2,12 @@
 
 class connectDB
 {
-    private $localhost = 'localhost';
-    private $username = 'username';
-    private $password = '';
-    private $db = 'test_db';
+    public $localhost = 'localhost';
+    public $username = 'wiem';
+    public $password = 'wiem23825269';
+    public $db;
     public static $instance;
-    private $conn;
+    private static $conn;
 
     public static function getInstance()
     {
@@ -21,19 +21,39 @@ class connectDB
     }
 
 
-    public function __construct()
+    // public function __construct()
+    // {
+    //     $this->conn = new mysqli($this->localhost, $this->username, $this->password, $this->db);
+    //     if (!$this->conn) {
+    //         echo 'Connection error' . mysqli_connect_error();
+    //     }
+    //else {
+    //     echo "you are successfully connected to the new method";
+    // }
+    // }
+
+    // public function getConnection($db)
+    // {
+
+    //     $this->conn = new mysqli($this->localhost, $this->username, $this->password, $db);
+    //     if (!$this->conn) {
+    //         echo 'Connection error' . mysqli_connect_error();
+    //     }
+    //     return $this->conn;
+    // }
+
+
+    public static function connect($dbName)
+
     {
-        $this->conn = new mysqli($this->localhost, $this->username, $this->password, $this->db);
-        if (!$this->conn) {
-            echo 'Connection error' . mysqli_connect_error();
-        }
-        //else {
-        //     echo "you are successfully connected to the new method";
-        // }
+
+        self::$conn = new mysqli('localhost', 'wiem', 'wiem23825269', $dbName);
     }
 
-    public function getConnection()
+    public static function getConnection()
+
     {
-        return $this->conn;
+
+        return self::$conn;
     }
 }

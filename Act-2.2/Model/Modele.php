@@ -24,8 +24,11 @@ class Article
     public function postArticle()
     {
         // $conn = $this->connect();
-        $connexion = new connectDB();
-        $conn = $connexion->getConnection();
+        // $connexion = new connectDB();
+        // $conn = $connexion->getConnection("test_db");
+        connectDB::connect('test_db');
+        $bdd1 = new connectDB();
+        $conn = $bdd1->getConnection();
 
         if (isset($_POST['submit'])) {
 
@@ -48,8 +51,9 @@ class Article
     //method to get articles
     public function getArticles()
     {
-        $connexion = new connectDB();
-        $conn = $connexion->getConnection();
+        connectDB::connect('test_db');
+        $bdd1 = new connectDB();
+        $conn = $bdd1->getConnection();
 
         // $conn = $this->connect();
         //write query for all articles
